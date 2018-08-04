@@ -1,0 +1,7 @@
+ID,Text,Translation
+10203040,Autosave Frequency,
+10203041,Configure the frequency of autosaving and the number of autosave files to keep,
+10203042,Autosave Interval,
+10203043,Number of Sols between Autosaves,
+10203044,Autosave Count,
+10203045,Number of Autosave files to keep,
