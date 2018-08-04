@@ -6,11 +6,11 @@ By default, it sets the Autosave frequency to save at the beginning of every Sol
 
 ## Mod Options
 
-If you have ModConfig by Aneurin from [Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=1340775972) or [Github](https://github.com/Aneurin/ModConfig) installed, the number of days and the number of files to keep are exposed as options that can be set.
+If you have ModConfig by Aneurin from [Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=1340775972), [NexusMods](https://www.nexusmods.com/survivingmars/mods/28) or [Github](https://github.com/Aneurin/ModConfig) installed, the number of days and the number of files to keep are exposed as options that can be set.
 
 ### Autosave Interval
 
-This is the number of Sols between autosaves, and can be set from 1 Sol to 10 Sols. When changing this value, the next autosave is updated to the first one that is able to be evenly divided by the interval.
+This is the number of Sols between autosaves, and can be set from 1 Sol to 10 Sols. When changing this value, the next autosave Sol is updated to the first one that is able to be evenly divided by the interval.
 
 For example, if it is currently Sol 90 and the Autosave Interval is set to 4, the next Sol able to be divided by 4 is 92. So the next autosave would occur at Sol 92, then every 4 Sols (96, 100, etc) after that.
 
