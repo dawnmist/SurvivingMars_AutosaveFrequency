@@ -4,9 +4,15 @@ This mod is used to reduce the time between autosaves, and to increase the numbe
 
 By default, it sets the Autosave frequency to save at the beginning of every Sol, and will keep the 5 most recent autosave files.
 
+This mod is available to download from NexusMods at: [https://www.nexusmods.com/survivingmars/mods/84](https://www.nexusmods.com/survivingmars/mods/84)
+
+Due to the fact that Steam will only permit publishing mods for games bought through Steam, and I bought the game through GoG, I am currently unable to publish this mod to the Steam Workshop.
+
 ## Mod Options
 
 If you have ModConfig by Aneurin from [Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=1340775972), [NexusMods](https://www.nexusmods.com/survivingmars/mods/28) or [Github](https://github.com/Aneurin/ModConfig) installed, the number of Sols and the number of files to keep are exposed as options that can be set.
+
+![Mod Options preview](/preview.png)
 
 ### Autosave Interval
 
