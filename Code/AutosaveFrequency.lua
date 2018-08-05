@@ -157,11 +157,7 @@ function Autosave()
         
     -- 3. Leave only the last X savegames (default 5)
     --    no error handler, since this is not a user-initiated action, and we've done our main job already
-    local numSavesToKeep = numAutosaves - 1
-    if numSavesToKeep > #autosaves then
-        numSavesToKeep = #autosaves
-    end
-    for i=numSavesToKeep+1, #autosaves do
+    for i=numAutosaves, #autosaves do
         DeleteGame(autosaves[i].savename)
     end
     

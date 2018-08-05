@@ -6,7 +6,7 @@ By default, it sets the Autosave frequency to save at the beginning of every Sol
 
 ## Mod Options
 
-If you have ModConfig by Aneurin from [Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=1340775972), [NexusMods](https://www.nexusmods.com/survivingmars/mods/28) or [Github](https://github.com/Aneurin/ModConfig) installed, the number of days and the number of files to keep are exposed as options that can be set.
+If you have ModConfig by Aneurin from [Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=1340775972), [NexusMods](https://www.nexusmods.com/survivingmars/mods/28) or [Github](https://github.com/Aneurin/ModConfig) installed, the number of Sols and the number of files to keep are exposed as options that can be set.
 
 ### Autosave Interval
 
