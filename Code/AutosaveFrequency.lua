@@ -85,6 +85,9 @@ local T = Translate
 -- Set Autosave Frequency, and align next autosave to multiple of frequency
 local function SetAutosaveFrequency()
     const.AutosavePeriod = autosaveInterval -- sols
+    if not UICity then
+        return
+    end
     local autosaveRemainder = UICity.day % autosaveInterval
     -- Align next autosave to next Sol divisible by the frequency
     -- e.g. if set to 4 days at day 90, next autosave sol will be 92, then incrementing by 4 after that.
