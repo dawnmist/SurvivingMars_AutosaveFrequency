@@ -6,8 +6,8 @@ return PlaceObj(
         "author", "Dawnmist",
         "id", "Dawnmist_AutosaveFrequency",
         "code", { "Code/AutosaveFrequency.lua" },
-        "version", 8,
-        "saved", 1533392068,
+        "version", 9,
+        "saved", 1533570104,
         "TagInterface", true
     }
 )
