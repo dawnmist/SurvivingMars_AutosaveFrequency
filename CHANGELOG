@@ -1,0 +1,7 @@
+Version 9
+  * Fix log error from accessing UICity before it had been properly loaded.
+
+Version 8 - Initial Release
+  * Set Autosave to happen at the beginning of each Sol by default.
+  * Set number of Autosave files to 5 by default.
+  * Use ModConfig by Aneurin to expose options for configuring Autosave Interval and the number of Autosaves to keep.
