@@ -34,53 +34,6 @@ local numAutosaves = 5
 
 -- Load translation data
 local mod_dir = Mods[modName].path
-local function FileExists(file)
-    _,file = AsyncFileOpen(file)
-    return file
-end
-
---load up translation strings
-local function LoadLocale(file)
-    if not pcall(function()
-        LoadTranslationTableFile(file)
-    end) then
-        DebugPrintNL(string.format("Problem loading locale: %s",file))
-    end
-end
-
--- load locale translation (if any, not likely with the amount of text, but maybe a partial one)
-local locale_file = table.concat{mod_dir,"Locales/",GetLanguage(),".csv"}
-if FileExists(locale_file) then
-    LoadLocale(locale_file)
-else
-    LoadLocale(table.concat{mod_dir,"Locales/","English.csv"})
-end
-Msg("TranslationChanged")
-
--- Translation
-local origT = T
-local function Translate(...)
-    local trans
-    local vararg = {...}
-    -- just in case a
-    pcall(function()
-        if type(vararg[1]) == "userdata" then
-            trans = _InternalTranslate(table.unpack(vararg))
-        else
-            trans = _InternalTranslate(origT(vararg))
-        end
-    end)
-    -- just in case b
-    if type(trans) ~= "string" then
-        if type(vararg[2]) == "string" then
-            return vararg[2]
-        end
-        -- just in case c
-        return vararg[1] .. " < Missing locale string id"
-    end
-    return trans
-end
-local T = Translate
 
 -- Set Autosave Frequency, and align next autosave to multiple of frequency
 local function SetAutosaveFrequency()
@@ -121,7 +74,7 @@ function Autosave()
     end
         
     local err, list = Savegame.ListForTag("savegame")
-        
+
     -- 1. Get a list of autosaves
     local autosaves = {}
     if not err then
@@ -132,6 +85,7 @@ function Autosave()
             end
         end
     end
+
     -- Sort saves by timestamp from newest to oldest (we'll remove the oldest few)
     table.sort(autosaves,
         function(a, b)
@@ -140,7 +94,7 @@ function Autosave()
     )
 
     -- Game's normal autosave translation string
-    local display_name = _InternalTranslate(origT{3688, "Autosave Sol <current_sol>", current_sol = UICity.day})
+    local display_name = _InternalTranslate(T{3688, "Autosave Sol <current_sol>", current_sol = UICity.day})
         
     -- 2. Save
     err = SaveAutosaveGame(display_name)
@@ -171,13 +125,13 @@ end
 function OnMsg.ModConfigReady()
     -- Register mod's name and description
     ModConfig:RegisterMod(modName,
-        T({10203040 --[["Autosave Frequency"]]}),
-        T({10203041 --[["Configure the frequency of autosaving and the number of autosave files to keep"]]})
+        T{10203040, "Autosave Frequency"},
+        T{10203041, "Configure the frequency of autosaving and the number of autosave files to keep"}
     )
     
     ModConfig:RegisterOption(modName, "AutosaveInterval", {
-        name = T({10203042 --[["Autosave Interval"]]}),
-        desc = T({10203043 --[["Number of Sols between Autosaves"]]}),
+        name = T{10203042, "Autosave Interval"},
+        desc = T{10203043, "Number of Sols between Autosaves"},
         order = 0,
         default = 1,
         type = "number",
@@ -187,8 +141,8 @@ function OnMsg.ModConfigReady()
     })
     
     ModConfig:RegisterOption(modName, "NumAutosaves", {
-        name = T({10203044 --[["Autosave Count"]]}),
-        desc = T({10203045 --[["Number of Autosave files to keep"]]}),
+        name = T{10203044, "Autosave Count"},
+        desc = T{10203045, "Number of Autosave files to keep"},
         order = 1,
         default = 5,
         type = "number",
@@ -212,7 +166,10 @@ end
 
 -- Load settings from ModConfig
 function OnMsg.UIReady()
-    if rawget(_G, "ModConfig") then
+    local ModConfig_id = "1340775972"
+    local g_ModConfigLoaded = table.find_value(ModsLoaded, "steam_id", ModConfig_id) or false
+
+    if g_ModConfigLoaded then
         autosaveInterval = ModConfig:Get(modName, "AutosaveInterval")
         numAutosaves = ModConfig:Get(modName, "NumAutosaves")
         SetAutosaveFrequency()
